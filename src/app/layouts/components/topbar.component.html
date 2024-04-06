@@ -2,15 +2,48 @@
   class="sticky gap-2 px-2 sm:px-0 top-0 left-0 z-50 bg-white flex items-center h-16 w-full border-b border-0 border-b-slate-200 border-solid"
 >
   <div class="w-64 hidden sm:flex justify-center items-center h-full flex-col">
-    <a class="text-xl font-semibold no-underline text-inherit" [routerLink]="['/']"
+    <a
+      class="text-xl font-semibold no-underline text-inherit"
+      [routerLink]="['/']"
       >Ban Cake <span class="text-pink-600">Pocky</span></a
     >
-
   </div>
-  <button (click)="layoutService.toggle()" pButton pRipple icon="pi pi-bars" class="hidden sm:inline-flex p-button-text p-button-secondary"></button>
-  <button (click)="layoutService.visible()" pButton pRipple icon="pi pi-bars" class="inline-flex sm:hidden p-button-text p-button-secondary"></button>
+  <button
+    (click)="layoutService.toggle()"
+    pButton
+    pRipple
+    icon="pi pi-bars"
+    class="hidden sm:inline-flex p-button-text p-button-secondary"
+  ></button>
+  <button
+    (click)="layoutService.visible()"
+    pButton
+    pRipple
+    icon="pi pi-bars"
+    class="inline-flex sm:hidden p-button-text p-button-secondary"
+  ></button>
 
-  <div class="flex-1 flex items-center justify-end px-4">
-    ...
+  <div class="relative flex-1 flex items-center justify-end px-4">
+    <a
+      #btn
+      (click)="toggleMenu()"
+      class="hover:bg-blue-100 flex items-center gap-x-2 rounded px-2 py-1"
+      ><i
+        class="pi pi-user bg-blue-50 text-xl text-slate-500 px-3 py-2 rounded-full"
+      ></i>
+      <span class="hidden sm:inline">Username</span></a
+    >
+    <ul
+      #menu
+      class="hidden w-screen sm:w-auto list-none min-w-[10rem] absolute top-full -right-2 h-screen md:h-auto sm:right-auto bg-white rounded shadow p-4 m-0 overflow-hidden"
+    >
+      <li>
+        <a
+          (click)="logOut()"
+          class="flex items-center justify-start gap-x-2 px-2 py-1 hover:bg-blue-100 text-red-500"
+          ><i class="pi pi-power-off"></i> ອອກຈາກລະບົບ</a
+        >
+      </li>
+    </ul>
   </div>
 </header>
