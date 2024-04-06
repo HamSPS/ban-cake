@@ -1,0 +1,54 @@
+
+    <p-table [value]="carts" class="sm:display-none">
+      <ng-template pTemplate="body" let-item let-i="rowIndex">
+        <tr>
+          <td>
+            <div class="flex justify-between items-center gap-2">
+              <div class="flex-1 flex items-start flex-col gap-2">
+                <span class="text-2xl font-semibold whitespace-nowrap">{{
+                  item.product.name
+                }}</span>
+                <label for="price"
+                  >ລາຄາ:
+                  <p-inputNumber
+                    inputId="price"
+                    [(ngModel)]="item.price"
+                    class="w-full"
+                    styleClass="w-full"
+                    (onInput)="updateCart()"
+                  ></p-inputNumber
+                ></label>
+                <label for="quantity"
+                  >ຈຳນວນ:
+                  <p-inputNumber
+                    inputId="quantity"
+                    [(ngModel)]="item.quantity"
+                    [showButtons]="true"
+                    [min]="0"
+                    (ngModelChange)="updateCart()"
+                    styleClass="w-full"
+                  ></p-inputNumber
+                ></label>
+              </div>
+              <div class="flex items-start">
+                <p-button
+                  icon="pi pi-times"
+                  [rounded]="true"
+                  [text]="true"
+                  severity="danger "
+                  (onClick)="removeItem(i)"
+                ></p-button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td class="text-center text-xl font-semibold py-6">ບໍ່ມີລາຍການສັ່ງຊື້</td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="summary">
+        <div class="flex">ລວມ: {{ summary | number }}</div>
+      </ng-template>
+    </p-table>

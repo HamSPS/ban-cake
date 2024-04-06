@@ -1,0 +1,117 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <p-dialog
+    [(visible)]="showDialog"
+    [modal]="true"
+    [header]="header"
+    styleClass="min-w-[330px]"
+    (onHide)="onHideDialog()"
+    (onShow)="onShowDialog()"
+  >
+    <div class="grid grid-cols-1">
+      <div class="col mb-3">
+        <label for="code"
+          >ລະຫັດສິນຄ້າ <span class="text-green-500">ຫວ່າງໄດ້</span></label
+        >
+        <input
+          type="text"
+          id="code"
+          pInputText
+          class="w-full"
+          formControlName="code"
+          [ngClass]="
+            submitted && formGroup.controls['code'].errors
+              ? 'ng-dirty ng-invalid'
+              : ''
+          "
+          placeholder="ລະຫັດ"
+        />
+        <small
+          class="p-error"
+          *ngIf="submitted && formGroup.controls['code'].errors"
+        >
+          ບໍ່ສາມາດຫວ່າງໄດ້
+        </small>
+      </div>
+      <div class="col mb-3">
+        <label for="name">ຊື່ສິນຄ້າ</label>
+        <input
+          type="text"
+          id="name"
+          pInputText
+          class="w-full"
+          formControlName="name"
+          [ngClass]="
+            submitted && formGroup.controls['name'].errors
+              ? 'ng-dirty ng-invalid'
+              : ''
+          "
+          placeholder="ຊື່"
+        />
+        <small
+          class="p-error"
+          *ngIf="submitted && formGroup.controls['name'].errors"
+        >
+          {{ formGroup.controls["name"].errors["required"]?.message }}
+        </small>
+      </div>
+      <div class="col mb-3">
+        <!-- <input type="number" pInputText formControlName="cost" placeholder="ຕົ້ນທຶນ"> -->
+        <label for="cost">ລາຄາຕົ້ນທຶນ</label>
+        <p-inputNumber
+          inputId="cost"
+          formControlName="cost"
+          [ngClass]="
+            submitted && formGroup.controls['cost'].errors
+              ? 'ng-dirty ng-invalid'
+              : ''
+          "
+          class="w-full"
+          styleClass="w-full"
+          placeholder="ຕົ້ນທຶນ"
+        ></p-inputNumber>
+        <small
+          class="p-error"
+          *ngIf="submitted && formGroup.controls['cost'].errors"
+        >
+          {{ formGroup.controls["cost"].errors["required"]?.message }}
+          {{ formGroup.controls["cost"].errors["numeric"]?.message }}
+        </small>
+      </div>
+      <div class="col mb-3">
+        <!-- <input type="number" pInputText formControlName="price" placeholder="ລາຄາຂາຍ"> -->
+        <label for="price">ລາຄາຂາຍ</label>
+        <p-inputNumber
+          inputId="price"
+          formControlName="price"
+          [ngClass]="
+            submitted && formGroup.controls['price'].errors
+              ? 'ng-dirty ng-invalid'
+              : ''
+          "
+          class="w-full"
+          styleClass="w-full"
+          placeholder="ລາຄາຂາຍ"
+        ></p-inputNumber>
+        <small
+          class="p-error"
+          *ngIf="submitted && formGroup.controls['price'].errors"
+        >
+          {{ formGroup.controls["price"].errors!["required"]?.message }}
+          {{ formGroup.controls["price"].errors!["numeric"]?.message }}
+        </small>
+      </div>
+    </div>
+    <ng-template pTemplate="footer">
+      <div class="flex justify-center items-center gap-2">
+        <button type="submit" pButton label="ບັນທຶກ" icon="pi pi-save"></button>
+        <button
+          (click)="onHideDialog()"
+          pButton
+          label="ຍົກເລີກ"
+          icon="pi pi-times"
+          class="p-button-danger"
+        ></button>
+      </div>
+    </ng-template>
+  </p-dialog>
+</form>

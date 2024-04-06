@@ -1,0 +1,20 @@
+
+<p-dataView #dv [value]="products" [rows]="10" [paginator]="true" filterBy="name" emptyMessage="ບໍ່ມີລາຍການ">
+  <ng-template pTemplate="header">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="text-3xl font-bold">ລາຍການ</div>
+      <div class="p-input-icon-left w-full">
+        <i class="pi pi-search"></i>
+        <input type="search" pInputText placeholder="ຄົ້ນຫາ" class="w-full" (input)="onSearch(dv, $event)">
+      </div>
+    </div>
+  </ng-template>
+  <ng-template let-item pTemplate="listItem">
+    <div (click)="onClick(item)" class="flex flex-row justify-between p-4 gap-4 hover:bg-slate-100 cursor-pointer">
+      <div class="text-2xl font-semi-bold">{{item.name}}</div>
+      <div>
+        <div class="text-base">₭ {{item.price}}</div>
+      </div>
+    </div>
+  </ng-template>
+</p-dataView>

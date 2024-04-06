@@ -1,0 +1,110 @@
+<form [formGroup]="formGroup" (submit)="onSave()">
+  <div class="grid">
+    <div class="col-span-12 mb-3">
+      <label for="name">ຊື່ລູກຄ້າ</label>
+      <div class="p-input-icon-left w-full">
+        <i class="pi pi-user"></i>
+        <input
+          id="name"
+          pInputText
+          type="text"
+          formControlName="customerName"
+          placeholder="ກະລຸນາປ້ອນຊື່ລູກຄ້າ"
+          class="w-full"
+          [ngClass]="
+            submitted && controls['customerName'].errors
+              ? 'ng-dirty ng-invalid'
+              : ''
+          "
+        />
+      </div>
+      <small
+        *ngIf="submitted && controls['customerName'].errors"
+        class="text-red-500"
+        >ບໍ່ສາມາດຫວ່າງໄດ້.</small
+      >
+    </div>
+
+    <div class="col-span-12 mb-3">
+      <label for="tel">ເບີໂທ</label>
+      <div class="p-input-icon-left w-full">
+        <i class="pi pi-phone"></i>
+        <input
+          id="tel"
+          pInputText
+          type="text"
+          formControlName="tel"
+          placeholder="ກະລຸນາປ້ອນເບີໂທ"
+          class="w-full"
+          [ngClass]="
+            submitted && controls['tel'].errors ? 'ng-dirty ng-invalid' : ''
+          "
+        />
+      </div>
+      <small *ngIf="submitted && controls['tel'].errors" class="text-red-500"
+        >ບໍ່ສາມາດຫວ່າງໄດ້.</small
+      >
+    </div>
+
+    <div class="col-span-12 mb-3">
+      <label for="sendDte">ວັນທີສົ່ງ</label>
+      <div class="p-input-icon-left w-full">
+        <i class="pi pi-calendar"></i>
+        <p-calendar
+          inputId="sendDte"
+          formControlName="sendDate"
+          placeholder="ວັນທີສົ່ງ"
+          [showIcon]="true"
+          [minDate]="minDate"
+          dateFormat="dd/mm/yy"
+          styleClass="w-full"
+          [ngClass]="
+            submitted && controls['sendDate'].errors
+              ? 'ng-dirty ng-invalid'
+              : ''
+          "
+        ></p-calendar>
+      </div>
+      <small
+        *ngIf="submitted && controls['sendDate'].errors"
+        class="text-red-500"
+        >ບໍ່ສາມາດຫວ່າງໄດ້.</small
+      >
+    </div>
+
+    <div class="col-span-12 mb-3">
+      <label for="address">ບ່ອນສົ່ງ</label>
+      <div class="p-input-icon-left w-full">
+        <i class="pi pi-map-marker"></i>
+        <textarea
+          id="address"
+          rows="2"
+          cols="30"
+          pInputTextarea
+          class="w-full"
+          placeholder="ກະລຸນາປ້ອນບ່ອນສົ່ງ"
+          formControlName="address"
+          [ngClass]="
+            submitted && controls['address'].errors ? 'ng-dirty ng-invalid' : ''
+          "
+        ></textarea>
+      </div>
+      <small
+        *ngIf="submitted && controls['address'].errors"
+        class="text-red-500"
+        >ບໍ່ສາມາດຫວ່າງໄດ້.</small
+      >
+    </div>
+  </div>
+  <div class="p-dialog-footer">
+    <p-button
+      label="ບັນທຶກ"
+      icon="pi pi-save"
+      [loading]="formGroup.disabled"
+      [disabled]="formGroup.disabled"
+      type="submit"
+      severity="success"
+      styleClass="w-full"
+    ></p-button>
+  </div>
+</form>

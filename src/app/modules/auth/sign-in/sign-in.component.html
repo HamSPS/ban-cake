@@ -1,0 +1,67 @@
+<div class="flex items-center justify-center w-full h-screen">
+  <p-card styleClass="h-screen sm:h-auto">
+    <ng-template pTemplate="header">
+      <img src="assets/images/logo.jpg" class="rounded-full w-1/2 block mx-auto" alt="logo" />
+    </ng-template>
+    <p-messages></p-messages>
+    <form [formGroup]="formGroup" autocomplete="off" (ngSubmit)="logIn()">
+      <div class="flex flex-col gap-4">
+        <div class="field w-full">
+          <span class="p-input-icon-left w-full">
+            <i class="pi pi-user"></i>
+            <input
+              type="text"
+              pInputText
+              placeholder="Username"
+              class="w-full"
+              formControlName="username"
+            />
+          </span>
+          <small
+            class="text-red-500"
+            *ngIf="submitted && controls['username'].errors"
+          >
+            {{ controls["username"].errors["required"].message }}
+          </small>
+        </div>
+
+        <div class="field">
+          <span class="p-input-icon-left w-full">
+            <i class="pi pi-lock"></i>
+            <!-- <p-password
+            formControlName="password"
+            inputStyleClass="w-full"
+            styleClass="w-full"
+            placeholder="Password"
+            [feedback]="false"
+            [toggleMask]="true"
+          ></p-password> -->
+            <input
+              type="password"
+              pInputText
+              formControlName="password"
+              placeholder="Password"
+              class="w-full"
+            />
+          </span>
+          <small
+            class="text-red-500"
+            *ngIf="submitted && controls['password']!.errors"
+          >
+            {{ controls['password']!.errors['required']?.message ?? '' }}
+            {{ controls["password"]!.errors["minLength"]?.message ?? '' }}
+          </small>
+        </div>
+
+        <button
+          pButton
+          pRipple
+          [loading]="formGroup.disabled"
+          type="submit"
+          label="ເຂົ້າສູ່ລະບົບ"
+          class="w-full"
+        ></button>
+      </div>
+    </form>
+  </p-card>
+</div>

@@ -1,0 +1,63 @@
+            <button (click)="downloadImg()" pButton pRipple type="button" icon="pi pi-download" class="p-button-rounded p-button-text"></button>
+            <!-- <p-button icon="pi pi-download" styleClass="mb-4" (onClick)="downloadImg()"></p-button> -->
+<div class="overflow-auto">
+  <div *ngIf="order" sandbox="allow-downloads" #bill class="a4-frame mx-auto p-12">
+    <div class="my-border">
+      <img src="assets/images/logo.jpg" alt="logo" class="w-44 rounded-full object-cover">
+    </div>
+    <div class="my-border flex justify-between items-center p-4">
+      <div class="">
+        <div class="text-6xl font-bold text-[#ef8983]">ໃບບິນ</div>
+      </div>
+      <div class="">
+        <div class="text-sm font-semibold">ບ້ານເຄັກ Pocky</div>
+        <div class="text-sm">ເບີໂທ: 020 2245 9465</div>
+        <div class="text-sm flex gap-2 w-56 whitespace-pre-line"><span>ສະຖານທີ່:</span> <span>ບ້ານ ວັດໄຕໃຫຍ່ທ່າ ເມືອງ ສີໂຄດຕະບອງ, ນະຄອນຫຼວງວຽງຈັນ</span></div>
+      </div>
+
+    </div>
+    <div class="my-border flex justify-between items-end p-4">
+      <div class="flex-1">
+        <div class="bg-[#ef8983] text-white w-full py-1 px-2 mb-2">ລູກຄ້າ</div>
+        <div class="text-sm font-medium">ຊື່: {{order.customerName}}</div>
+        <div class="text-sm">ເບີໂທ: {{order.tel}}</div>
+        <div class="text-sm">ບ່ອນສົ່ງ: {{order.address}}</div>
+      </div>
+      <div class="flex-1 text-right">
+        <div class="text-sm font-medium">ເລກບິນ: {{order.docNo}}</div>
+        <div class="text-sm">ວັນທີ: {{order.createdAt | date:'dd/MM/yyyy HH:mm:ss'}}</div>
+        <div class="text-sm">ວັນທີສົ່ງ: {{order.sendDate | date:'dd/MM/yyyy HH:mm:ss'}}</div>
+      </div>
+    </div>
+    <div class="my-border p-4">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>ລາຍການ</th>
+            <th>ຈຳນວນ</th>
+            <th>ລາຄາ</th>
+            <th>ລວມ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let item of order.details;let i = index">
+            <tr>
+              <td class="text-center">{{i+1}}</td>
+              <td>{{item.product?.name}}</td>
+              <td class="text-center">{{item.quantity | number}}</td>
+              <td class="text-right">{{item.price | number}}</td>
+              <td class="text-right">{{item.price! * item.quantity! | number}}</td>
+            </tr>
+          </ng-container>
+
+          <tr class="!bg-transparent">
+            <td colspan="2" class="">&nbsp;</td>
+            <td colspan="2" class="!bg-[#ffe5d8] text-right">ລວມ</td>
+            <td class="!bg-[#ffe5d8] text-right">{{summary | number}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

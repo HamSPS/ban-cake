@@ -1,0 +1,113 @@
+<!-- large screen -->
+<div
+  class="hidden sm:flex justify-center w-full sm:w-64 z-40 bg-white fixed top-0 left-0 border border-solid h-screen border-slate-200 p-4 overflow-hidden overflow-y-auto transition-[width] sm:transition-all ease-linear duration-100"
+  [style]="{ transform: isToggle ? 'translateX(-100%)' : 'translateX(0)' }"
+>
+  <ul class="p-0 list-none flex-1 mt-16">
+    <li>
+      <div
+        class="p-2 text-slate-400 text-sm font-bold border-0 border-b border-solid border-b-slate-200"
+      >
+        ໜ້າຫຼັກ
+      </div>
+    </li>
+    <li>
+      <a (click)="visible()"
+        routerLink="/home"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="bg-slate-100"
+        class="no-underline text-inherit flex items-center gap-2 hover:bg-slate-100 rounded-md px-2 py-3"
+      >
+        <span class="pi pi-home"></span>
+        <span>ໜ້າຫຼັກ</span>
+      </a>
+    </li>
+    <li>
+      <a (click)="visible()"
+        routerLink="/order"
+        routerLinkActive="bg-slate-100"
+        class="no-underline text-inherit flex items-center gap-2 hover:bg-slate-100 rounded-md px-2 py-3"
+      >
+        <span class="pi pi-list"></span>
+        <span>ອໍເດີ</span>
+      </a>
+    </li>
+    <li>
+      <a (click)="visible()"
+        routerLink="/products"
+        routerLinkActive="bg-slate-100"
+        class="no-underline text-inherit flex items-center gap-2 hover:bg-slate-100 rounded-md px-2 py-3"
+      >
+        <span class="pi pi-shopping-bag"></span>
+        <span>ສິນຄ້າ</span>
+      </a>
+    </li>
+    <li>
+      <a (click)="visible()"
+        routerLink="/users"
+        routerLinkActive="bg-slate-100"
+        class="no-underline text-inherit flex items-center gap-2 hover:bg-slate-100 rounded-md px-2 py-3"
+      >
+        <span class="pi pi-users"></span>
+        <span>ຜູ້ໃຊ້</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- small screen -->
+<div
+  class="sm:hidden justify-center w-full sm:w-64 z-40 bg-white fixed top-0 left-0 border border-solid h-screen border-slate-200 p-4 overflow-hidden overflow-y-auto transition-[width] sm:transition-all ease-linear duration-100"
+  [ngClass]="isVisible ? 'flex w-full' : 'hidden w-0'"
+>
+  <ul class="p-0 list-none flex-1 mt-16">
+    <li>
+      <div
+        class="p-2 text-slate-400 text-sm font-bold border-0 border-b border-solid border-b-slate-200"
+      >
+        ໜ້າຫຼັກ
+      </div>
+    </li>
+    <li>
+      <a (click)="visible()"
+        routerLink="/home"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="bg-slate-100"
+        class="no-underline text-inherit flex items-center gap-2 hover:bg-slate-100 rounded-md px-2 py-3"
+      >
+        <span class="pi pi-home"></span>
+        <span>ໜ້າຫຼັກ</span>
+      </a>
+    </li>
+    <li>
+      <a (click)="visible()"
+        routerLink="/order"
+        routerLinkActive="bg-slate-100"
+        class="no-underline text-inherit flex items-center gap-2 hover:bg-slate-100 rounded-md px-2 py-3"
+      >
+        <span class="pi pi-list"></span>
+        <span>ອໍເດີ</span>
+      </a>
+    </li>
+    <li>
+      <a (click)="visible()"
+        routerLink="/products"
+        routerLinkActive="bg-slate-100"
+        class="no-underline text-inherit flex items-center gap-2 hover:bg-slate-100 rounded-md px-2 py-3"
+      >
+        <span class="pi pi-shopping-bag"></span>
+        <span>ສິນຄ້າ</span>
+      </a>
+    </li>
+    <li>
+      <a (click)="visible()"
+        routerLink="/users"
+        routerLinkActive="bg-slate-100"
+        class="no-underline text-inherit flex items-center gap-2 hover:bg-slate-100 rounded-md px-2 py-3"
+      >
+        <span class="pi pi-users"></span>
+        <span>ຜູ້ໃຊ້</span>
+      </a>
+    </li>
+  </ul>
+</div>
