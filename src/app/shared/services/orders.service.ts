@@ -10,13 +10,10 @@ import { Order } from '../interfaces/orders.interface';
 export class OrdersService {
   apiUrl: string = '';
 
-  private order: BehaviorSubject<Order | null> =
-    new BehaviorSubject<Order | null>(null);
+  private order: BehaviorSubject<Order> = new BehaviorSubject<Order>({});
   readonly order$ = this.order.asObservable();
 
-  private orders: BehaviorSubject<Order[] | null> = new BehaviorSubject<
-    Order[] | null
-  >(null);
+  private orders: BehaviorSubject<Order[]> = new BehaviorSubject<Order[]>([]);
   readonly orders$ = this.orders.asObservable();
 
   constructor(private http: HttpClient) {
@@ -40,10 +37,10 @@ export class OrdersService {
 
     return this.http.get<Order[]>(url, { params: { status: status } }).pipe(
       tap((response: any) => {
-        if(response.statusCode === 200 && response.data) {
+        if (response.statusCode === 200 && response.data) {
           const orders = response.data;
 
-(response);
+          response;
 
           this.orders.next(orders);
         }
@@ -67,11 +64,13 @@ export class OrdersService {
   updateStatus(ids: number[], status: number) {
     const url = `${this.apiUrl}/orders/status/${ids}`;
 
-    return this.http.patch<Order>(url, {status: status}).pipe(
+    return this.http.patch<Order>(url, { status: status }).pipe(
       map((response: any) => {
-        if(response.statusCode === 200) {
+        if (response.statusCode === 200) {
           const orders = this.orders.getValue();
-          const filter: Order[] = orders?.filter((value: Order) => !ids.includes(value.id!))!;
+          const filter: Order[] = orders?.filter(
+            (value: Order) => !ids.includes(value.id!)
+          )!;
 
           this.orders.next(filter);
 

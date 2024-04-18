@@ -1,0 +1,24 @@
+<div class="p-card">
+  <div class="p-card-body">
+    <div class="p-card-title">ລາຍການຂາຍດີ</div>
+    <ul class="list-none p-0 m-0">
+      <li
+        class="font-semibold border-0 border-b-2 p-4 border-solid border-slate-200"
+      >
+        <div class="flex items-center justify-between">
+          <span>ສິນຄ້າ</span>
+          <span>ຈຳນວນ</span>
+        </div>
+      </li>
+      <li
+        *ngFor="let item of bestSold"
+        class="border-0 border-b p-4 border-solid border-slate-200"
+      >
+        <div class="flex items-center justify-between">
+          <span>{{ item?.name }}</span>
+          <span>{{ item?.count }}</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

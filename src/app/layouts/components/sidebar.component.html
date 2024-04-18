@@ -8,7 +8,7 @@
       <div
         class="p-2 text-slate-400 text-sm font-bold border-0 border-b border-solid border-b-slate-200"
       >
-        ໜ້າຫຼັກ
+        ເມນູ
       </div>
     </li>
     <li>
@@ -24,12 +24,24 @@
     </li>
     <li>
       <a (click)="visible()"
+        routerLink="/order/create"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="bg-slate-100"
+        class="no-underline text-inherit flex items-center gap-2 hover:bg-slate-100 rounded-md px-2 py-3"
+      >
+        <span class="pi pi-plus"></span>
+        <span>ສ້າງອໍເດີ</span>
+      </a>
+    </li>
+    <li>
+      <a (click)="visible()"
         routerLink="/order"
+        [routerLinkActiveOptions]="{ exact: true }"
         routerLinkActive="bg-slate-100"
         class="no-underline text-inherit flex items-center gap-2 hover:bg-slate-100 rounded-md px-2 py-3"
       >
         <span class="pi pi-list"></span>
-        <span>ອໍເດີ</span>
+        <span>ລາຍການ</span>
       </a>
     </li>
     <li>
@@ -77,6 +89,17 @@
       >
         <span class="pi pi-home"></span>
         <span>ໜ້າຫຼັກ</span>
+      </a>
+    </li>
+    <li>
+      <a (click)="visible()"
+        routerLink="/order/create"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="bg-slate-100"
+        class="no-underline text-inherit flex items-center gap-2 hover:bg-slate-100 rounded-md px-2 py-3"
+      >
+        <span class="pi pi-plus"></span>
+        <span>ສ້າງອໍເດີ</span>
       </a>
     </li>
     <li>

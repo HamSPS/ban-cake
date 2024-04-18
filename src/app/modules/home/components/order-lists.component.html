@@ -1,0 +1,61 @@
+<p-card>
+  <ng-template pTemplate="title">
+    <div class="flex flex-col sm:flex-row items-center justify-between">
+      <div class="p-cart-title">ລາຍການອໍເດີ</div>
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input
+          #search
+          type="search"
+          pInputText
+          placeholder="ຄົ້ນຫາເລກບິນ, ຊື່ລູກຄ້າ"
+          (input)="dt.filterGlobal(search.value, 'contains')"
+        />
+      </span>
+    </div>
+  </ng-template>
+  <p-table #dt [value]="orders" [rowHover]="true" [paginator]="true" [rows]="5" [globalFilterFields]="['docNo', 'customerName']">
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <th>ເລກບິນ</th>
+        <th>ວັນທີ</th>
+        <th>ວັນທີສົ່ງ</th>
+        <th>ຈຳນວນລາຍການ</th>
+        <th>ລູກຄ້າ</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-item let-i="rowIndex">
+      <tr>
+        <td class="whitespace-nowrap">
+          <button
+            (click)="updateStatus(item.id, 2)"
+            pButton
+            icon="pi pi-check"
+            class="p-button-success p-button-rounded p-button-text mr-2"
+          ></button>
+          <button
+            (click)="updateStatus(item.id, 3)"
+            pButton
+            icon="pi pi-times"
+            class="p-button-danger p-button-rounded p-button-text"
+          ></button>
+        </td>
+        <td class="whitespace-nowrap">{{ item.docNo }}</td>
+        <td class="whitespace-nowrap">
+          {{ item.createdAt | date : "dd/MM/yyyy HH:mm" }}
+        </td>
+        <td class="whitespace-nowrap">
+          {{ item.sendDate | date : "dd/MM/yyyy" }}
+        </td>
+        <td class="whitespace-nowrap">{{ item.details.length }}</td>
+        <td class="whitespace-nowrap">{{ item.customerName }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="6" class="text-center font-semibold">ບໍ່ມີລາຍການສັ່ງຊື້</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>

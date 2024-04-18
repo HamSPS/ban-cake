@@ -1,4 +1,4 @@
-<div class="grid grid-cols-2 gap-2">
+<!-- <div class="grid grid-cols-2 gap-2">
     <ng-container *ngFor="let item of menuItems">
       <p-card [styleClass]="item.styleClass" ngClass="relative">
         <div class="flex flex-col gap-3 items-center justify-center relative">
@@ -8,5 +8,31 @@
         <a [routerLink]="item.routerLink" class="absolute block w-full h-full z-10 top-0 left-0"></a>
       </p-card>
     </ng-container>
+</div> -->
+<div class="grid grid-cols-12 gap-4">
+  <div class="col-span-12 sm:col-span-3">
+    <app-count-orders></app-count-orders>
+  </div>
+  <div class="col-span-12 sm:col-span-3">
+    <app-count-products></app-count-products>
+  </div>
+  <div class="col-span-12 sm:col-span-3">
+    <app-count-users></app-count-users>
+  </div>
+  <div class="col-span-12 sm:col-span-3">
+    <app-count-customer></app-count-customer>
+  </div>
+
+  <!-- Order List -->
+  <div class="col-span-12 sm:col-span-8">
+    <app-order-lists></app-order-lists>
+  </div>
+  <div class="col-span-12 sm:col-span-4 sm:row-span-2">
+    <app-best-sold></app-best-sold>
+  </div>
+  <div class="col-span-12 sm:col-span-8">
+    <app-sold></app-sold>
+  </div>
+
 </div>
-<div class="bg-"></div>
+<p-toast></p-toast>

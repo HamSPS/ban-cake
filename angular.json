@@ -9,6 +9,10 @@
         "@schematics/angular:component": {
           "style": "none",
           "skipTests": true
+        },
+        "@schematics/angular:resolver": {
+          "skipTests": true,
+          "functional": false
         }
       },
       "root": "",
@@ -33,7 +37,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/chart.js/dist/chart.js"
+            ]
           },
           "configurations": {
             "production": {

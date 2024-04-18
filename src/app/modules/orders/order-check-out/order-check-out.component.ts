@@ -95,7 +95,7 @@ export class OrderCheckOutComponent implements OnInit {
         }
       },
       error: (err) => {
-        const errMessage = err.errors.message;
+        const errMessage = err?.error?.message;
         this.message.add({
           severity: 'danger',
           summary: 'Error',

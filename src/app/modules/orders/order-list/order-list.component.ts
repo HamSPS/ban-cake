@@ -29,11 +29,8 @@ export class OrderListComponent implements OnInit, OnDestroy {
     this.ordersService.findByStatus(status).subscribe();
     this.ordersService.orders$
       .pipe(takeUntil(this.unsubscribeAll))
-      .subscribe((value: Order[] | null) => {
-        if (value) this.orders = value;
-
-(value);
-
+      .subscribe((value: Order[]) => {
+        this.orders = value;
       });
   }
 
@@ -62,8 +59,7 @@ export class OrderListComponent implements OnInit, OnDestroy {
   }
 
   filter(table: Table, event: any): void {
-
-(event);
+    event;
 
     table.filterGlobal(event.value, 'contains');
     // this.filterService.filter(en)
